@@ -1,0 +1,12 @@
+사용하기 전에 .env의 변수를 변경하여 사용하여야 합니다.
+아래와 같은 값을 가지고 있습니다.
+GITLAB_HOME=docker compose시 사용할 data의 위치
+EXTERNAL_URL=GITLAB의 도메인
+RUNNER_NAME=SPECIAL-RUNNER
+REGISTRATION_TOKEN=GITLAB에서 Admin/Settings/Runners/Specific runners의 Registration Token을 참조하여 넣어주면 됩니다.
+
+docker-compose를 수행 하기 전 data폴더가 존재하지 않는다면 initialize.ps1 혹은 initialize.sh를 수행하여 주시면 기본 data 폴더가 생성됩니다.
+
+docker-compose up -d 를 수행하여 생성되는 인스턴스 중 register-runner는 단 한번만 실행됩니다. 해당 인스턴스는 gitlab에 자동으로 runner를 등록하여 줍니다.
+
+샘플로 gitlab-ci.yml을 첨부하였습니다.

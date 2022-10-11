@@ -1,0 +1,21 @@
+variables:
+  DOCKER_HOST: $CI_REGISTRY
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+docker-build:
+  image: docker:latest
+  stage: build
+  script:
+    - docker-compose down
+    - docker-compose build
+  only:
+    - main
+docker-deploy:
+  image: docker:latest
+  stage: deploy
+  script:
+    - docker-compose up -d
+  only:
+    - main
